@@ -3,14 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>reveal.js</title>
+		<meta name="description" content="A journey to <br>(micro) services">
+		<title>A journey to (micro) services</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style media="screen">
+			.reveal * { text-align: left; }
+			.reveal h1, .reveal h2, .reveal h3 { color: #EB5448; margin-bottom: 20px; }
+			.reveal ul.spaced li { margin-bottom: 25px; }
+			.reveal li.smaller { font-size: 70%; }
+			.reveal .left-panel, .right-panel { width: 45%; text-align: left; }
+			.reveal .left-panel *, .right-panel * { width: 100%; }
+			.reveal .left-panel { float: left; }
+			.reveal .right-panel { float: right; }
+			.custom-theme {
+		    background-color: #313538;
+		    background-image: -webkit-radial-gradient(center, circle farthest-corner, #555a5f 0%, #1c1e20 100%);
+		    background-image: radial-gradient(circle farthest-corner at center, #555a5f 0%, #1c1e20 100%);
+			}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -22,11 +37,310 @@
 		</script>
 	</head>
 	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+		<div class="theme-font-montserrat theme-color-grey-blue custom-theme" style="width: 100%; height: 100%;">
+    	<div class="reveal">
+      	<div class="slides">
+          <section>
+						<h1>A journey to <br>(micro) services</h1>
+          </section>
+
+          <section>
+						<h2>Pedro Januário <br>
+							<em style="font-size: 60%";>Co-founder &amp; Technology Evangelist @ singular</em>
+						</h2>
+						<br>
+						<ul class="spaced">
+							<li>Service Oriented Architectures</li>
+							<li>Microservices</li>
+							<li>API Design</li>
+							<li>Isomorphic Web Applications</li>
+							<li>JavaScript / Node.js / Ruby / C#</li>
+							<li>Elasticsearch / ZeroMQ</li>
+						</ul>
+          </section>
+
+          <section>
+						<h2>Pedro Januário</h2>
+						<br>
+						<h3>Open Source / Community</h3>
+            <ul>
+              <li class="smaller">micro-toolkit.github.io/info/</li>
+              <li class="smaller">ZeroMQ</li>
+              <li class="smaller">Rendr</li>
+              <li class="smaller">require('lx')</li>
+            </ul>
+						<br><br>
+						<h3>Links</h3>
+            <ul>
+              <li class="smaller">wearesingular.com/pj</li>
+              <li class="smaller">linkedin.com/in/pjanuario&nbsp;</li>
+              <li class="smaller">twitter.com/prnjanuario&nbsp;</li>
+              <li class="smaller">github.com/pjanuario</li>
+            </ul>
+          </section>
+
+          <section>
+						<h2>Agenda</h2>
+            <ul class="spaced">
+              <li>SOA &amp; Microservices</li>
+              <li>Monoliths vs Microservices</li>
+              <li>Bounded Contexts</li>
+              <li>Integration Patterns &amp; Challenges</li>
+              <li>Continuous Delivery</li>
+              <li>Monitoring</li>
+            </ul>
+          </section>
+          <section>
+						<h2>(micro) services</h2>
+          </section>
+          <section>
+						<div class="left-panel">
+							<h2>SOA</h2>
+							<ul>
+								<li class="smaller">Boundaries</li>
+								<li class="smaller">Autonomy</li>
+								<li class="smaller">Schema and contract as interface</li>
+							</ul>
+							<p>In real world</p>
+							<ul>
+								<li class="smaller">Big service scope</li>
+								<li class="smaller">ESB's with super powers</li>
+								<li class="smaller">Centralised Governance</li>
+								<li class="smaller">Technology coupling</li>
+								<li class="smaller">Entreprise decision factor</li>
+							</ul>
+						</div>
+						<div class="right-panel">
+							<h2>Microservices</h2>
+							<ul>
+								<li class="smaller">Boundaries</li>
+								<li class="smaller">Autonomy</li>
+								<li class="smaller">Loose Contracts</li>
+								<li class="smaller">Fine grained scopes</li>
+								<li class="smaller">Process Automation</li>
+								<li class="smaller">Continuous Delivery</li>
+								<li class="smaller">Technology agnostic</li>
+								<li class="smaller">Lightweight message protocols</li>
+								<li class="smaller">Decentralised Governance</li>
+								<li class="smaller">Smart endpoints &amp; dumb pipes</li>
+							</ul>
+						</div>
+          </section>
+          <section>
+						<div class="left-panel">
+							<h3>Monolith (+)</h3>
+							<ul class="spaced">
+									<li>Lower entry cost</li>
+									<li>Fast development cycles in short term</li>
+									<li>Centralised code base</li>
+									<li>Cross cutting functionalities</li>
+							</ul>
+						</div>
+						<div class="right-panel">
+							<h3>Microservices (+)</h3>
+							<ul class="spaced">
+									<li>Fast development cycles in med/long term</li>
+									<li>Components via services</li>
+									<li>Strong boundaries</li>
+									<li>Independent deploys</li>
+									<li>Decentralised data management</li>
+							</ul>
+						</div>
+          </section>
+          <section>
+						<div class="left-panel">
+            	<h3>Monolith (+)</h3>
+              <ul class="spaced">
+                <li>Easier to build integration&amp;system tests</li>
+                <li>Centralised data management</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <h3>Microservices (+)</h3>
+              <ul class="spaced">
+                <li>Technology diversity</li>
+                <li>Distributed nature is easier to scale</li>
+                <li>Designed for failure</li>
+                <li>Smart endpoints</li>
+                <li>Small codebases</li>
+                <li>Evolutionary design</li>
+              </ul>
+						</div>
+          </section>
+
+          <section>
+						<div class="left-panel">
+            	<h3>Monolith (-)</h3>
+              <ul class="spaced">
+								<li>Fast development cycles in short term</li>
+								<li>Components via modules or libraries</li>
+								<li>Large codebases</li>
+								<li>Small changes == to large deploys</li>
+								<li>Slow feedback</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <h3>Microservices (-)</h3>
+              <ul class="spaced">
+								<li>Higher entry cost</li>
+								<li>Fast development cycles in med/long term</li>
+								<li>Independent deploys</li>
+								<li>Operational overhead</li>
+								<li>Decentralised data management</li>
+              </ul>
+						</div>
+          </section>
+
+          <section>
+						<div class="left-panel">
+            	<h3>Monolith (-)</h3>
+              <ul class="spaced">
+								<li>Deploys are scheduled and often delayed</li>
+								<li>Hard &amp; expensive scale</li>
+								<li>Difficult onboard</li>
+								<li>No sense of ownership</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <h3>Microservices (-)</h3>
+              <ul class="spaced">
+								<li>Technology diversity</li>
+								<li>Distributed nature is harder to build</li>
+								<li>Design for failure</li>
+								<li>System tests are more complex</li>
+              </ul>
+						</div>
+          </section>
+
+          <section>
+						<h2>Bounded Contexts</h2>
+						<p style="margin-bottom: 40px;"><em>"a specific responsability enforced by explicit boundaries"</em><br><span style="font-size:0.7em">Domain Driven Design by Eric Evans</span></p>
+						<div class="left-panel">
+              <ul class="spaced">
+                <li>Loose Coupling</li>
+                <li>High Cohesion</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <ul class="spaced">
+                  <li>Domains</li>
+                  <li>Services and business capabilities</li>
+                  <li>Share models not implementation</li>
+                  <li>Shared model</li>
+                  <li>Hidden models</li>
+              </ul>
+						</div>
+          </section>
+          <section>
+						<h2>Integration Patterns</h2>
+						<div class="left-panel">
+              <ul class="spaced">
+                  <li>Database Integration</li>
+                  <li>RPC</li>
+                  <li>REST</li>
+                  <li>HATEOS</li>
+                  <li>Consumer Driven Contracts and tests</li>
+                  <li>Versioning</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <ul class="spaced">
+                  <li>Request / Response</li>
+                  <li>Event driven Archictures</li>
+              </ul>
+						</div>
+          </section>
+          <section>
+            <h2>Integration Challenges</h2>
+            <ul class="spaced">
+                <li>Network failure</li>
+                <li>Cascading failures</li>
+                <li>Performance</li>
+                <li>System Integrity</li>
+                <li>Eventual consistency</li>
+                <li>"Chatty" applications</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Continuous Deliveries</h2>
+						<div class="left-panel">
+							<ul class="spaced">
+								<li>Automation</li>
+								<li>Automated tests</li>
+								<li>Automated builds</li>
+								<li>Automated artifacts</li>
+								<li>Fast development &amp; deploy cycles</li>
+							</ul>
+						</div>
+						<div class="right-panel">
+							<ul class="spaced">
+                <li>Fast feedback</li>
+                <li>Automated deploys</li>
+                <li>Automated data migrations</li>
+                <li>Deploy pipelines</li>
+              </ul>
+						</div>
+          </section>
+          <section>
+            <h2>Monitoring</h2>
+            <ul class="spaced">
+              <li>Collect Metrics</li>
+              <li>Centralise logs</li>
+              <li>Correlation ids</li>
+              <li>Dynamic Dependency graphs</li>
+              <li>Synthetic transactions / Semantic monitoring</li>
+              <li>Alerting</li>
+            </ul>
+          </section>
+          <section>
+						<h2>Common pitfalls</h2>
+						<div class="left-panel">
+              <ul class="spaced">
+                  <li>Database Integration</li>
+                  <li>DRY &amp; Shared libraries</li>
+                  <li>Client libraries</li>
+                  <li>Broken contracts</li>
+                  <li>Manual deploys &amp; provisioning</li>
+                  <li>Lack of monitoring</li>
+                  <li>Anemic services</li>
+              </ul>
+						</div>
+						<div class="right-panel">
+              <ul class="spaced">
+                  <li>Lack of correlation event logs</li>
+                  <li>Poor logging and log tools</li>
+                  <li>Real time graphs &amp; monitoring</li>
+                  <li>Not prepared for changes</li>
+                  <li>Lack of consistency in service API's</li>
+                  <li>Building a distributed monolith</li>
+              </ul>
+						</div>
+          </section>
+          <section>
+						<h1>Questions ?</h1>
+          </section>
+          <section>
+            <h2>Links &amp; References</h2>
+						<div class="left-panel">
+	            <ul>
+	              <li>wearesingular.com/pj</li>
+	              <li>linkedin.com/in/pjanuario&nbsp;</li>
+	              <li>twitter.com/prnjanuario&nbsp;</li>
+	              <li>github.com/pjanuario</li>
+	            </ul>
+						</div>
+						<div class="right-panel">
+							<ul>
+									<li>Building microservices</li>
+									<li>martinfowler.com</li>
+									<li>Domain Driven Design</li>
+									<li>Implementing Domain Driven Design</li>
+									<li>microservices.io</li>
+							</ul>
+						</div>
+          </section>
+        </div>
+    	</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
